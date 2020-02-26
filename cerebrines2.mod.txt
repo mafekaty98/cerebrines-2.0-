@@ -99,8 +99,8 @@ end;
 //initval-block: set initial condition of capital to 90% of steady state value 
 //****************************************************************************
 initval;
-    k=0.9*(((sk*(sh/(n+g+delta+j*(1-fi_j_t)-e*(1-fi_e_t)))^(ji/(1-ji)))/(n+g+delta+j-e))^(1/(1-alpha)))^((1-ji)*(1-alpha)/((1-ji)*(1-alpha)-alpha*ji));
-    h=0.9*((sh*((((sk*(sh/(n+g+delta+j*(1-fi_j_t)-e*(1-fi_e_t)))^(ji/(1-ji)))/(n+g+delta+j-e))^(1/(1-alpha)))^((1-ji)*(1-alpha)/((1-ji)*(1-alpha)-alpha*ji)))^alpha)/(n+g+delta+j*(1-fi_j_t)-e(1-fi_e_t)))^(1/(1-alpha));
+   k=0.9*((((sk*(sh/(n+g+delta+(j*(1-fi_j_t))-(e*(1-fi_e_t))))^(ji/(1-ji)))/(n+g+delta+j-e)))^(1/(1-alpha)))^(((1-ji)*(1-alpha))/(((1-ji)*(1-alpha))-alpha*ji));
+    h=0.9*(sh*((((sk*(sh/(n+g+delta+j*(1-fi_j_t)-e*(1-fi_e_t)))^(ji/(1-ji)))/(n+g+delta+j-e))^(1/(1-alpha)))^((1-ji)*(1-alpha)/((1-ji)*(1-alpha)-alpha*ji)))^(alpha/(n+g+delta+(j*(1-fi_j_t))-(e*(1-fi_e_t)))))^(1/(1-alpha));
     y=k^alpha*h^ji;
     c=(1-sk-sh)*y;
     invest=y-c;
@@ -120,8 +120,8 @@ end;
 //endval-block: set terminal condition to steady state value
 //****************************************************************************
 endval;
-    k=(((sk*(sh/(n+g+delta+j*(1-fi_j_t)-e*(1-fi_e_t)))^(ji/(1-ji)))/(n+g+delta+j-e))^(1/(1-alpha)))^((1-ji)*(1-alpha)/((1-ji)*(1-alpha)-alpha*ji));
-    h=((sh*((((sk*(sh/(n+g+delta+j*(1-fi_j_t)-e*(1-fi_e_t)))^(ji/(1-ji)))/(n+g+delta+j-e))^(1/(1-alpha)))^((1-ji)*(1-alpha)/((1-ji)*(1-alpha)-alpha*ji)))^alpha)/(n+g+delta+j*(1-fi_j_t)-e(1-fi_e_t)))^(1/(1-alpha));
+    k=((((sk*(sh/(n+g+delta+(j*(1-fi_j_t))-(e*(1-fi_e_t))))^(ji/(1-ji)))/(n+g+delta+j-e)))^(1/(1-alpha)))^(((1-ji)*(1-alpha))/(((1-ji)*(1-alpha))-alpha*ji));
+    h=(sh*((((sk*(sh/(n+g+delta+j*(1-fi_j_t)-e*(1-fi_e_t)))^(ji/(1-ji)))/(n+g+delta+j-e))^(1/(1-alpha)))^((1-ji)*(1-alpha)/((1-ji)*(1-alpha)-alpha*ji)))^(alpha/(n+g+delta+(j*(1-fi_j_t))-(e*(1-fi_e_t)))))^(1/(1-alpha));
     y=k^alpha*h^ji;
     c=(1-sk-sh)*y;
     invest=y-c;
